@@ -4,6 +4,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.dakshad.student_management.service.StudentService;
+
+import jakarta.validation.Valid;
+
 import com.dakshad.student_management.model.Student;
 
 @RestController
@@ -24,12 +27,12 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student createStudent(@RequestBody Student student) {
+    public Student createStudent(@Valid  @RequestBody Student student) {
         return studentService.createStudent(student);
     }
 
     @PutMapping("/{id}")
-    public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
+    public Student updateStudent(@PathVariable Long id, @Valid @RequestBody Student student) {
         return studentService.updateStudent(id, student);
     }
 
